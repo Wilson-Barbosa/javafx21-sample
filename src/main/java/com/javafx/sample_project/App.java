@@ -5,6 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,15 +23,27 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         
-        Button btnOk = new Button("Ok");
-        Scene scene = new Scene(btnOk, 200, 400);
+        // Creates a circle 
+        Circle circle = new Circle();
+        circle.setCenterX(100);
+        circle.setCenterY(100);
+        circle.setRadius(80);
+        circle.setStroke(Color.BLACK);
+        circle.setFill(Color.RED);
 
-        stage.setTitle("My JAavaFX"); // sets a stage's scene
+        // Create a pane to hold the circle inside
+        Pane pane = new Pane();
+        pane.getChildren().add(circle);
+
+        // Creates the scene that will hold the pane's circle
+        Scene scene = new Scene(pane, 300, 200);
+
+        // Configuring my scene and adding the panel to it
+        stage.setTitle("Circle project");
         stage.setScene(scene);
         stage.show();
+
     }
-
-
 
     public static void main(String[] args) {
         launch();
